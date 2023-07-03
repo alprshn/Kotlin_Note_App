@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/toolbar_settings"
+        android:title="Settings"
+        android:layout_gravity="center">
+
+    >
+    </item>
+
+    <item
+        android:id="@+id/toolbar_theme"
+        android:title="Theme">
+
+    </item>
+</menu>
