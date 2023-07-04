@@ -24,6 +24,14 @@
             android:text="My Notes"
             android:textColor="@color/black"
             android:textSize="18sp" />
+        <TextView
+            android:id="@+id/alper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="My Notes"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <Button
             android:layout_width="40dp"
