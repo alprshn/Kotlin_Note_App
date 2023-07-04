@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="10dp"
     app:cardElevation="4dp">
 
     <RelativeLayout
@@ -15,28 +16,42 @@
             android:id="@+id/emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="4dp"
-            android:padding="4dp"
             android:layout_gravity="start"
-            android:text="Note Title"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+
+
+            android:layout_marginEnd="4dp"
+            android:padding="4dp"
+            android:text="N"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/noteTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_toRightOf="@id/emoji"
             android:padding="4dp"
             android:text="Note Ttile"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/noteDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emoji"
+            android:layout_gravity="start"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="4dp"
+            android:padding="4dp"
+            android:text="aaaaaaaaaaaaaaaaaaaa"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
 
     </RelativeLayout>
 
