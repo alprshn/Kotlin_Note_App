@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = NotsAdapter(this,notesLists)
         binding.rv.adapter = adapter
-        binding.buttonAddNote.setOnClickListener {
+        binding.floatingActionButton.setOnClickListener {
 
         }
     }

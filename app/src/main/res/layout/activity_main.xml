@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#f1f1f1">
+    android:background="#F8F6F6"
+    tools:context=".MainActivity">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,6 +16,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -31,7 +33,7 @@
             android:layout_height="40dp"
             android:layout_gravity="end"
             android:layout_marginEnd="20sp"
-            android:background="@drawable/baseline_expand_more_24"
+            android:background="@drawable/baseline_grid_view_24"
             android:tint="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="12dp" />
@@ -47,7 +49,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="0dp"
@@ -56,19 +57,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddNote"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/card_design" />
 
-    <Button
-        android:id="@+id/buttonAddNote"
-        android:layout_width="339dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="4dp"
-        android:text="+"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/rv"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="23dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:srcCompat="@drawable/baseline_expand_more_24" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        app:cardBackgroundColor="#E3DFDF"
+        app:layout_constraintBottom_toBottomOf="@+id/rv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="20sp"
+            android:background="@drawable/baseline_color_lens_24"
+            android:tint="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="12dp" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
