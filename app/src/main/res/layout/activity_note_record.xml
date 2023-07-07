@@ -52,8 +52,9 @@
         android:layout_marginTop="23dp"
         android:background="@null"
         android:ems="11"
+        android:inputType="textMultiLine"
         android:hint="Title"
-        android:inputType="text"
+
         android:textSize="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,6 +68,7 @@
         android:layout_marginTop="7dp"
         android:background="@null"
         android:ems="17"
+        android:inputType="textMultiLine"
         android:hint="Note"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
