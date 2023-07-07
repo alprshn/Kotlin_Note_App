@@ -1,5 +1,6 @@
 package com.example.noteapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.noteapp.databinding.ActivityNoteRecordBinding
@@ -15,6 +16,9 @@ class NoteRecordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.saveButton
+        binding.saveButton.setOnClickListener{
+            startActivity(Intent(this@NoteRecordActivity,MainActivity::class.java))
+            finish()
+        }
     }
 }
