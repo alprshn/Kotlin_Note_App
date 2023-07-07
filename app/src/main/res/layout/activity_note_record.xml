@@ -64,6 +64,7 @@
         android:id="@+id/editTextText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:background="@null"
         android:ems="17"
         android:hint="Note"
@@ -71,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="132dp" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
 
     <androidx.cardview.widget.CardView
