@@ -1,5 +1,6 @@
 package com.example.noteapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         adapter = NotsAdapter(this,notesLists)
         binding.rv.adapter = adapter
         binding.floatingActionButton.setOnClickListener {
-
+            startActivity(Intent(this@MainActivity,NoteRecordActivity::class.java))
         }
     }
 
