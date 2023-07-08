@@ -1,9 +1,11 @@
 package com.example.noteapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -13,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var notesLists:ArrayList<Notes>
     private lateinit var adapter: NotsAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -56,6 +60,11 @@ class MainActivity : AppCompatActivity() {
         binding.floatingActionButton.setOnClickListener {
             startActivity(Intent(this@MainActivity,NoteRecordActivity::class.java))
         }
+
+
+
+
+
     }
 
     override fun onBackPressed() {
