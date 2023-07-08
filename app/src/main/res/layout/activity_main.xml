@@ -56,12 +56,12 @@
         android:id="@+id/rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="1.0"
+
         tools:listitem="@layout/card_design" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -76,12 +76,15 @@
         app:srcCompat="@drawable/baseline_expand_more_24" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/bottomCard"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/black"
         app:cardBackgroundColor="#E3DFDF"
-        app:layout_constraintBottom_toBottomOf="@+id/rv"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button

@@ -17,7 +17,7 @@ class DetailsActivity : AppCompatActivity() {
         val notes =intent.getSerializableExtra("object") as Notes
 
         binding.editTitle.setText(notes.note_title)
-        
+
 
 
 
