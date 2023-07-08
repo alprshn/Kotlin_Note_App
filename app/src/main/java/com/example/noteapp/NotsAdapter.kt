@@ -1,6 +1,7 @@
 package com.example.noteapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,9 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         holder.textViewNoteTitle.text = notes.note_title
         holder.textViewNoteDate.text  = notes.note_date
         holder.notesCard.setOnClickListener {
-
+            val intent =Intent(mContext,DetailsActivity::class.java)
+            intent.putExtra("object",notes)
+            mContext.startActivity(intent)
         }
     }
 }
