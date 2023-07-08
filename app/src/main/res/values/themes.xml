@@ -7,6 +7,11 @@
 
     </style>
 
+    <style name="ShowAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#3F51B5</item>
+        <item name="android:background">#5fa3d0</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
 
     <style name="Theme.NoteApp" parent="Base.Theme.NoteApp" />
 </resources>
