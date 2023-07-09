@@ -84,17 +84,36 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.changeViewButton.setOnClickListener {
-            if (binding.changeViewButton.background.equals(getDrawable(R.drawable.baseline_grid_view_24))){
 
+
+
+            if (binding.changeViewButton.background.constantState == ContextCompat.getDrawable(this, R.drawable.baseline_grid_view_24)?.constantState){
+                var linearLayoutManager: LinearLayoutManager
+                binding.rv.layoutManager = LinearLayoutManager(this)
+                binding.rv.setHasFixedSize(true)
+
+                binding.changeViewButton.setOnClickListener {
+                    var linearLayoutManager: LinearLayoutManager
+                    binding.rv.layoutManager = GridLayoutManager(this,2)
+                    binding.rv.setHasFixedSize(true)
+                    binding.changeViewButton.setBackgroundResource(R.drawable.baseline_view_list_24)
+                }
+            }
+            else{
+                
                 var linearLayoutManager: LinearLayoutManager
                 binding.rv.layoutManager = GridLayoutManager(this,2)
                 binding.rv.setHasFixedSize(true)
+
+                binding.changeViewButton.setOnClickListener {
+                    var linearLayoutManager: LinearLayoutManager
+                    binding.rv.layoutManager = LinearLayoutManager(this)
+                    binding.rv.setHasFixedSize(true)
+                    binding.changeViewButton.setBackgroundResource(R.drawable.baseline_grid_view_24)
+                }
+
             }
-            else{
-                binding.changeViewButton.background = getDrawable(R.drawable.baseline_view_list_24)
-            }
-        }
+
     }
 
     override fun onBackPressed() {
