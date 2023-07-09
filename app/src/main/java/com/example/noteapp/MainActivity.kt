@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.noteapp.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var notesLists:ArrayList<Notes>
@@ -82,6 +83,18 @@ class MainActivity : AppCompatActivity() {
         colorPickerButton.setOnClickListener { showColorPickerDialog() }
 
 
+
+        binding.changeViewButton.setOnClickListener {
+            if (binding.changeViewButton.background.equals(getDrawable(R.drawable.baseline_grid_view_24))){
+
+                var linearLayoutManager: LinearLayoutManager
+                binding.rv.layoutManager = GridLayoutManager(this,2)
+                binding.rv.setHasFixedSize(true)
+            }
+            else{
+                binding.changeViewButton.background = getDrawable(R.drawable.baseline_view_list_24)
+            }
+        }
     }
 
     override fun onBackPressed() {

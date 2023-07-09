@@ -33,6 +33,7 @@
             android:textSize="18sp" />
 
         <Button
+            android:id="@+id/changeViewButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="end"

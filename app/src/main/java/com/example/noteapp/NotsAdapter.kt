@@ -23,6 +23,7 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             textViewEmoji = design.findViewById(R.id.emoji)
             textViewNoteTitle = design.findViewById(R.id.noteTitle)
             textViewNoteDate = design.findViewById(R.id.noteDateText)
+
         }
     }
 
@@ -36,13 +37,15 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
     }
 
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
+
+
         val notes = notesList.get(position)
         holder.textViewEmoji.text = notes.emoji
         holder.textViewNoteTitle.text = notes.note_title
-        holder.textViewNoteDate.text  = notes.note_date
+        holder.textViewNoteDate.text = notes.note_date
         holder.notesCard.setOnClickListener {
-            val intent =Intent(mContext,DetailsActivity::class.java)
-            intent.putExtra("object",notes)
+            val intent = Intent(mContext, DetailsActivity::class.java)
+            intent.putExtra("object", notes)
             mContext.startActivity(intent)
         }
     }

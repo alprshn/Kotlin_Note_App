@@ -42,7 +42,6 @@
             tools:layout_editor_absoluteY="12dp" />
 
 
-
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
@@ -85,7 +84,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/black"
-
         app:cardBackgroundColor="#FFFBFBFB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +91,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/detailsColorPicker"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="start|center_vertical"
@@ -120,6 +119,9 @@
             android:tint="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="12dp" />
+
+
+
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
