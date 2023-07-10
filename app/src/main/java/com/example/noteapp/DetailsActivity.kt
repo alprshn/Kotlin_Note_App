@@ -19,6 +19,7 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailsBinding
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
