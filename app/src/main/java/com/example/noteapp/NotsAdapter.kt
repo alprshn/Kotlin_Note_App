@@ -3,6 +3,7 @@ package com.example.noteapp
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,13 +39,19 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
 
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
         var cardColor:String
-
+        Log.e("deneme","deneme25")
         val notes = notesList.get(position)
+        Log.e("deneme","deneme26")
         cardColor = notes.note_color
-        holder.notesCard.setCardBackgroundColor(Color.parseColor(/* colorString = */ cardColor))
+        Log.e("deneme","deneme27")
+        //holder.notesCard.setCardBackgroundColor(Color.parseColor(/* colorString = */ cardColor))
+        //Log.e("deneme","deneme28")
         holder.textViewEmoji.text = notes.emoji
+        Log.e("deneme","deneme29")
         holder.textViewNoteTitle.text = notes.note_title
+        Log.e("deneme","deneme30")
         holder.textViewNoteDate.text = notes.note_date
+        Log.e("deneme","deneme31")
         holder.notesCard.setOnClickListener {
             val intent = Intent(mContext, DetailsActivity::class.java)
             intent.putExtra("object", notes)

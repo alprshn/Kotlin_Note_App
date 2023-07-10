@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -33,8 +34,8 @@ class NoteRecordActivity : AppCompatActivity() {
 
         binding.saveButton.setOnClickListener {
             //Veritabanı
-            val note_title=binding.editTextText.text.toString().trim()
-            val note=binding.editTextText2.text.toString().trim()
+            val note_title = binding.editTextText.text.toString().trim()
+            val note = binding.editTextText2.text.toString().trim()
            //Emoji eklenecek val emoji=binding..text.toString().trim()
             //val note_date=binding.editTextText.text.toString().trim()
             // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
@@ -49,8 +50,9 @@ class NoteRecordActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
-            Notesdao().AddNote(vt,note,note_title,null,null,null)
+            Log.e("deneme","deneme1")
+            Notesdao().AddNote(vt,note,note_title,"null","2014","null","null")
+            Log.e("deneme","deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()
 

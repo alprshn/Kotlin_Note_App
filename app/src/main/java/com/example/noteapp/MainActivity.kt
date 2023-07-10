@@ -56,19 +56,18 @@ class MainActivity : AppCompatActivity() {
         val unicode = 0x1F60A
         val emoji = getEmoji(unicode)
 
-
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = LinearLayoutManager(this)
 
+
         vt = HelperDatabase(this)
+        Log.e("deneme","deneme7")
         notesLists = Notesdao().AllNotes(vt)
-
-
-
-
-
+        Log.e("deneme","deneme6")
         adapter = NotsAdapter(this, notesLists)
+        Log.e("deneme","deneme8")
         binding.rv.adapter = adapter
+        Log.e("deneme","deneme9")
         binding.floatingActionButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, NoteRecordActivity::class.java))
         }
