@@ -9,10 +9,12 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -24,16 +26,16 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.noteapp.databinding.ActivityMainBinding
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var notesLists: ArrayList<Notes>
+    private lateinit var displayLists: ArrayList<Notes>
     private lateinit var adapter: NotsAdapter
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
-    private lateinit var deleteCard: String
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = LinearLayoutManager(this)
-
         notesLists = ArrayList()
 
+
         val n1 =
-            Notes(1, emoji, "Filmler Note Listesi", "12 Haziran", "null", "null", "null", "null")
+            Notes(1, emoji, "Filmler Note Listesi", "12 Haziran", "null", "Green", "null", "null")
+
         notesLists.add(n1)
         notesLists.add(n1)
         notesLists.add(n1)
@@ -92,7 +95,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
 
 
     fun ChangeViev() {
