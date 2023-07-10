@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -25,7 +27,7 @@ import com.example.noteapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var notesLists:ArrayList<Notes>
+    private lateinit var notesLists: ArrayList<Notes>
     private lateinit var adapter: NotsAdapter
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
@@ -43,8 +45,6 @@ class MainActivity : AppCompatActivity() {
             .into(binding.imageView)
 
 
-
-
         //for Emoji Code
 
         val unicode = 0x1F60A
@@ -56,7 +56,8 @@ class MainActivity : AppCompatActivity() {
 
         notesLists = ArrayList()
 
-        val n1 = Notes(1,emoji,"Filmler Note Listesi","12 Haziran","null","null","null","null")
+        val n1 =
+            Notes(1, emoji, "Filmler Note Listesi", "12 Haziran", "null", "null", "null", "null")
         notesLists.add(n1)
         notesLists.add(n1)
         notesLists.add(n1)
@@ -71,10 +72,10 @@ class MainActivity : AppCompatActivity() {
         notesLists.add(n1)
 
 
-        adapter = NotsAdapter(this,notesLists)
+        adapter = NotsAdapter(this, notesLists)
         binding.rv.adapter = adapter
         binding.floatingActionButton.setOnClickListener {
-            startActivity(Intent(this@MainActivity,NoteRecordActivity::class.java))
+            startActivity(Intent(this@MainActivity, NoteRecordActivity::class.java))
         }
 
 
@@ -83,38 +84,37 @@ class MainActivity : AppCompatActivity() {
         colorPickerButton.setOnClickListener { showColorPickerDialog() }
 
 
+        ChangeViev()
 
 
+    }
 
 
-            if (binding.changeViewButton.background.constantState == ContextCompat.getDrawable(this, R.drawable.baseline_grid_view_24)?.constantState){
+    fun ChangeViev() {
+        var selector: Boolean
+        selector = true
+
+        binding.changeViewButton.setOnClickListener {
+            if (selector) {
+
+                binding.changeViewButton.setBackgroundResource(R.drawable.baseline_view_list_24)
+                var linearLayoutManager: LinearLayoutManager
+                binding.rv.layoutManager = GridLayoutManager(this, 2)
+                binding.rv.setHasFixedSize(true)
+                selector = false
+            } else {
+                Log.e("if", "if")
+                binding.changeViewButton.setBackgroundResource(R.drawable.baseline_grid_view_24)
                 var linearLayoutManager: LinearLayoutManager
                 binding.rv.layoutManager = LinearLayoutManager(this)
                 binding.rv.setHasFixedSize(true)
-
-                binding.changeViewButton.setOnClickListener {
-                    var linearLayoutManager: LinearLayoutManager
-                    binding.rv.layoutManager = GridLayoutManager(this,2)
-                    binding.rv.setHasFixedSize(true)
-                    binding.changeViewButton.setBackgroundResource(R.drawable.baseline_view_list_24)
-                }
-            }
-            else{
-                
-                var linearLayoutManager: LinearLayoutManager
-                binding.rv.layoutManager = GridLayoutManager(this,2)
-                binding.rv.setHasFixedSize(true)
-
-                binding.changeViewButton.setOnClickListener {
-                    var linearLayoutManager: LinearLayoutManager
-                    binding.rv.layoutManager = LinearLayoutManager(this)
-                    binding.rv.setHasFixedSize(true)
-                    binding.changeViewButton.setBackgroundResource(R.drawable.baseline_grid_view_24)
-                }
-
+                selector = true
             }
 
+
+        }
     }
+
 
     override fun onBackPressed() {
         val intent = Intent(Intent.ACTION_MAIN)
@@ -122,20 +122,31 @@ class MainActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
+
     //getEmoıji
     fun getEmoji(uni: Int): String {
         return String(Character.toChars(uni))
     }
 
 
-
-
     private fun showColorPickerDialog() {
 
         val colors = listOf(
-            Color.CYAN, Color.rgb(179, 157, 219), Color.MAGENTA, Color.rgb(245, 245, 220), Color.YELLOW,
-            Color.rgb(169, 169, 169), Color.GREEN, Color.rgb(244, 164, 96), Color.BLUE, Color.RED,
-            Color.rgb(255, 228, 181), Color.rgb(72, 61, 139), Color.rgb(205, 92, 92), Color.rgb(255, 165, 0), Color.rgb(102, 205, 170)
+            Color.CYAN,
+            Color.rgb(179, 157, 219),
+            Color.MAGENTA,
+            Color.rgb(245, 245, 220),
+            Color.YELLOW,
+            Color.rgb(169, 169, 169),
+            Color.GREEN,
+            Color.rgb(244, 164, 96),
+            Color.BLUE,
+            Color.RED,
+            Color.rgb(255, 228, 181),
+            Color.rgb(72, 61, 139),
+            Color.rgb(205, 92, 92),
+            Color.rgb(255, 165, 0),
+            Color.rgb(102, 205, 170)
         )
 
         val numColumns = 5 // Desired number of columns
@@ -153,9 +164,16 @@ class MainActivity : AppCompatActivity() {
                 // Do something with the selected color
 
                 // Change Background Color
-                content.setBackgroundColor(ColorUtils.blendARGB(selectedColor, Color.BLACK, 0.3f)) // Make it darker
+                content.setBackgroundColor(
+                    ColorUtils.blendARGB(
+                        selectedColor,
+                        Color.BLACK,
+                        0.3f
+                    )
+                ) // Make it darker
                 // Change Status Bar Background Color
-                window.statusBarColor = ColorUtils.blendARGB(selectedColor, Color.BLACK, 0.1f) // Make it darker
+                window.statusBarColor =
+                    ColorUtils.blendARGB(selectedColor, Color.BLACK, 0.1f) // Make it darker
                 // Change the App Bar Background Color
                 supportActionBar?.setBackgroundDrawable(ColorDrawable(selectedColor))
 
