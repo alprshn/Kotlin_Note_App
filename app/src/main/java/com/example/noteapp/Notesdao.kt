@@ -1,7 +1,6 @@
 package com.example.noteapp
 
 import android.content.ContentValues
-import android.net.vcn.VcnCellUnderlyingNetworkTemplate
 
 class Notesdao {
 
@@ -13,8 +12,14 @@ class Notesdao {
         while (c.moveToNext()){
             val note = Notes(c.getInt(c.getColumnIndex("note_id"))
             ,c.getString(c.getColumnIndex("emoji"))
-            ,)
+            ,c.getString(c.getColumnIndex("note_title"))
+            ,c.getString(c.getColumnIndex("note_date"))
+            ,c.getString(c.getColumnIndex("main_color"))
+            ,c.getString(c.getColumnIndex("note_color"))
+            ,c.getString(c.getColumnIndex("note")))
+            notesList.add(note)
         }
+        return notesList
     }
 
     fun NoteDelete(hd: HelperDatabase, note_id: Int) {
@@ -27,9 +32,9 @@ class Notesdao {
         hd: HelperDatabase,
         note: String,
         note_title: String,
-        emoji: String,
-        note_date: String,
-        note_color: String
+        emoji: String?,
+        note_date: String?,
+        note_color: String?
     ) {
         val db = hd.writableDatabase
         val values = ContentValues()

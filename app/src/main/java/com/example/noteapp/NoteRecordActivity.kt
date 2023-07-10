@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +14,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.databinding.ActivityNoteRecordBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class NoteRecordActivity : AppCompatActivity() {
@@ -20,27 +22,53 @@ class NoteRecordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNoteRecordBinding
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
+    private lateinit var vt: HelperDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityNoteRecordBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        //Veritabanı
+        vt = HelperDatabase(this)
+
+        binding.saveButton.setOnClickListener {
+            //Veritabanı
+            val note_title=binding.editTextText.text.toString().trim()
+            val note=binding.editTextText2.text.toString().trim()
+           //Emoji eklenecek val emoji=binding..text.toString().trim()
+            //val note_date=binding.editTextText.text.toString().trim()
+            // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
+
+            if(TextUtils.isEmpty((note_title))){
+                Snackbar.make(binding.toolbar,"Note Başlığı Giriniz",Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(TextUtils.isEmpty((note))){
+                Snackbar.make(binding.toolbar,"Note Giriniz",Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
 
-        binding.saveButton.setOnClickListener{
-            startActivity(Intent(this@NoteRecordActivity,MainActivity::class.java))
+            Notesdao().AddNote(vt,note,note_title,null,null,null)
+            startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()
+
         }
 
 
         content = findViewById(R.id.contentRecord)
         val colorPickerButton: Button = findViewById(R.id.ColorPickerCardRecord)
         colorPickerButton.setOnClickListener { showColorPickerDialog() }
+
+
     }
 
 
     private fun dpToPx(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
+
     private fun showColorPickerDialog() {
 
         val colors = listOf(

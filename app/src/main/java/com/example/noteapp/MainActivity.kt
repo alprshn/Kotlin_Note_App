@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: NotsAdapter
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
-
+    private lateinit var vt: HelperDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -59,24 +59,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = LinearLayoutManager(this)
-        notesLists = ArrayList()
+
+        vt = HelperDatabase(this)
+        notesLists = Notesdao().AllNotes(vt)
 
 
-        val n1 =
-            Notes(1, emoji, "Filmler Note Listesi", "12 Haziran", "null", "Green", "null", "null")
 
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
-        notesLists.add(n1)
 
 
         adapter = NotsAdapter(this, notesLists)
