@@ -32,7 +32,6 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var notesLists: ArrayList<Notes>
-    private lateinit var displayLists: ArrayList<Notes>
     private lateinit var adapter: NotsAdapter
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
@@ -51,10 +50,7 @@ class MainActivity : AppCompatActivity() {
             .into(binding.imageView)
 
 
-        //for Emoji Code
 
-        val unicode = 0x1F60A
-        val emoji = getEmoji(unicode)
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = LinearLayoutManager(this)
@@ -117,10 +113,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //getEmoıji
-    fun getEmoji(uni: Int): String {
-        return String(Character.toChars(uni))
-    }
+
+
 
 
     private fun showColorPickerDialog() {

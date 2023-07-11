@@ -7,7 +7,7 @@ import android.util.Log
 
 class HelperDatabase(context: Context) : SQLiteOpenHelper(context,"notes.sqlite", null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL("CREATE TABLE notes(note_id INTEGER PRIMARY KEY AUTOINCREMENT,emoji TEXT, note_title TEXT,note_date TEXT,main_color TEXT,note_color TEXT,note TEXT );")
+        db?.execSQL("CREATE TABLE notes(note_id INTEGER PRIMARY KEY AUTOINCREMENT,emoji INTEGER, note_title TEXT,note_date TEXT,main_color TEXT,note_color TEXT,note TEXT );")
         Log.e("deneme","deneme3")
     }
 

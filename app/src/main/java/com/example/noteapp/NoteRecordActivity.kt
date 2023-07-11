@@ -51,7 +51,7 @@ class NoteRecordActivity : AppCompatActivity() {
             }
 
             Log.e("deneme","deneme1")
-            Notesdao().AddNote(vt,note,note_title,"null","2014","null","null")
+            Notesdao().AddNote(vt,note,note_title,0x1F60A,"2014","null","null")
             Log.e("deneme","deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()

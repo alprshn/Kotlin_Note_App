@@ -16,7 +16,7 @@ class Notesdao {
         while (c.moveToNext()){
             Log.e("deneme","deneme20")
             val note = Notes(c.getInt(c.getColumnIndex("note_id"))
-            ,c.getString(c.getColumnIndex("emoji"))
+            ,c.getInt(c.getColumnIndex("emoji"))
             ,c.getString(c.getColumnIndex("note_title"))
             ,c.getString(c.getColumnIndex("note_date"))
             ,c.getString(c.getColumnIndex("main_color"))
@@ -39,7 +39,7 @@ class Notesdao {
         hd: HelperDatabase,
         note: String,
         note_title: String,
-        emoji: String,
+        emoji: Int,
         note_date: String,
         note_color: String,
         main_color:String
@@ -63,7 +63,7 @@ class Notesdao {
         note_id: Int,
         note: String,
         note_title: String,
-        emoji: String,
+        emoji: Int,
         note_date: String,
         note_color: String
     ) {

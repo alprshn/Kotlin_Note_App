@@ -26,6 +26,10 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             textViewNoteDate = design.findViewById(R.id.noteDateText)
 
         }
+
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
@@ -37,6 +41,10 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         return notesList.size
     }
 
+    fun getEmoji(uni: Int): String {
+        return String(Character.toChars(uni))
+    }
+
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
         var cardColor:String
         Log.e("deneme","deneme25")
@@ -46,8 +54,13 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         Log.e("deneme","deneme27")
         //holder.notesCard.setCardBackgroundColor(Color.parseColor(/* colorString = */ cardColor))
         //Log.e("deneme","deneme28")
-        holder.textViewEmoji.text = notes.emoji
+
+        //for Emoji Code
+        val unicode = notes.emoji
+        val emoji = getEmoji(unicode)//bura düzenlenecek
+        holder.textViewEmoji.text = emoji
         Log.e("deneme","deneme29")
+
         holder.textViewNoteTitle.text = notes.note_title
         Log.e("deneme","deneme30")
         holder.textViewNoteDate.text = notes.note_date
