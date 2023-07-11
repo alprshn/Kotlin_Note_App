@@ -183,4 +183,12 @@ class MainActivity : AppCompatActivity() {
     private fun dpToPx(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
+
+
+
+
+
+
+
+
 }

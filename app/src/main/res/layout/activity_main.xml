@@ -25,7 +25,13 @@
         >
 
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Alper Şahin"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
         <Button
             android:id="@+id/changeViewButton"
             android:layout_width="40dp"
@@ -46,16 +52,7 @@
             tools:layout_editor_absoluteX="20dp"
             tools:layout_editor_absoluteY="12dp" />
 
-        <SearchView
-            android:id="@+id/searchBar"
-            android:layout_width="250dp"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:queryHint="Search Note"
-            android:iconifiedByDefault="false"
-            android:background="@drawable/searchview_background"
-            android:queryBackground="@android:color/transparent"
-            />
+
 
     </androidx.appcompat.widget.Toolbar>
 

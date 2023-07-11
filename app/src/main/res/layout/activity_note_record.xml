@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@null"
-
+        android:maxLength="2"
         android:ems="11"
         android:hint="Title"
         android:inputType="textMultiLine"
@@ -118,7 +118,7 @@
             android:textSize="18sp" />
 
         <Button
-
+            android:id="@+id/emojiButton"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="end|center_vertical"

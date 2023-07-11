@@ -22,6 +22,7 @@ class NoteRecordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNoteRecordBinding
     private lateinit var colorPickerDialog: AlertDialog
+    private lateinit var emojiPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
     private lateinit var vt: HelperDatabase
 
@@ -58,11 +59,15 @@ class NoteRecordActivity : AppCompatActivity() {
 
         }
 
-
+        //For Color
         content = findViewById(R.id.contentRecord)
         val colorPickerButton: Button = findViewById(R.id.ColorPickerCardRecord)
         colorPickerButton.setOnClickListener { showColorPickerDialog() }
 
+        //For Emoji
+        content = findViewById(R.id.contentRecord)
+        val emojiButton: Button = findViewById(R.id.emojiButton)
+        emojiButton.setOnClickListener { showEmojiPickerDialog() }
 
     }
 
@@ -132,5 +137,52 @@ class NoteRecordActivity : AppCompatActivity() {
             }
             .create()
         colorPickerDialog.show()
+    }
+
+
+
+
+
+
+    //For Emoji Code
+    private fun showEmojiPickerDialog() {
+
+        val colors = listOf(
+            0x1F60A
+
+        )
+
+        val numColumns = 5 // Desired number of columns
+        val padding = dpToPx(15) // Convert 15 dp to pixels
+        val spacing = dpToPx(15) // Set the spacing between items in dp
+
+        val recyclerView = RecyclerView(this).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            layoutManager = GridLayoutManager(this@NoteRecordActivity, numColumns)
+            setPadding(padding, dpToPx(20), padding, padding) // Convert padding to pixels
+            adapter = ColorAdapter(this@NoteRecordActivity, colors) { selectedColor ->
+
+                // Do something with the selected emoji
+
+                 // Make it darker
+                // Change the App Bar Background Color
+                supportActionBar?.setBackgroundDrawable(ColorDrawable(selectedColor))
+
+                emojiPickerDialog.dismiss()
+            }
+            addItemDecoration(GridSpacingItemDecoration(numColumns, spacing, true))
+        }
+
+        emojiPickerDialog = AlertDialog.Builder(this, R.style.ShowAlertDialogTheme)
+            .setTitle("Choose a emoji")
+            .setView(recyclerView)
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+        emojiPickerDialog.show()
     }
 }
