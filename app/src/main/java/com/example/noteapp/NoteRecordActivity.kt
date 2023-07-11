@@ -40,23 +40,24 @@ class NoteRecordActivity : AppCompatActivity() {
             //Veritabanı
             val note_title = binding.editTextText.text.toString().trim()
             val note = binding.editTextText2.text.toString().trim()
-           //Emoji eklenecek val emoji=binding..text.toString().trim()
+            val emoji = findViewById(R.id.addEmoji)
+            //Emoji eklenecek val emoji=binding..text.toString().trim()
             //val note_date=binding.editTextText.text.toString().trim()
             // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
 
-            if(TextUtils.isEmpty((note_title))){
-                Snackbar.make(binding.toolbar,"Note Başlığı Giriniz",Snackbar.LENGTH_SHORT).show()
+            if (TextUtils.isEmpty((note_title))) {
+                Snackbar.make(binding.toolbar, "Note Başlığı Giriniz", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if(TextUtils.isEmpty((note))){
-                Snackbar.make(binding.toolbar,"Note Giriniz",Snackbar.LENGTH_SHORT).show()
+            if (TextUtils.isEmpty((note))) {
+                Snackbar.make(binding.toolbar, "Note Giriniz", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            Log.e("deneme","deneme1")
-            Notesdao().AddNote(vt,note,note_title,0x1F60A,"2014","null","null")
-            Log.e("deneme","deneme2")
+            Log.e("deneme", "deneme1")
+            Notesdao().AddNote(vt, note, note_title, 0x1F60A, "2014", "null", "null")
+            Log.e("deneme", "deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()
 
@@ -67,6 +68,9 @@ class NoteRecordActivity : AppCompatActivity() {
         val colorPickerButton: Button = findViewById(R.id.ColorPickerCardRecord)
         colorPickerButton.setOnClickListener { showColorPickerDialog() }
 
+        binding.emojiRecordButton.setOnClickListener {
+            showAlertDialogButtonClicked()
+        }
 
     }
 
@@ -77,13 +81,13 @@ class NoteRecordActivity : AppCompatActivity() {
         builder.setTitle("Name")
 
         // set the custom layout
-        val customLayout: View = layoutInflater.inflate(R.layout.emoji_item, null)
+        val customLayout: View = layoutInflater.inflate(R.layout.emoji_layout, null)
         builder.setView(customLayout)
 
         // add a button
         builder.setPositiveButton("OK") { dialog: DialogInterface?, which: Int ->
             // send data from the AlertDialog to the Activity
-            val editText = customLayout.findViewById<EditText>(R.id.emojiText)
+            val editText = customLayout.findViewById<EditText>(R.id.addEmoji)
             sendDialogDataToActivity(editText.text.toString())
         }
         // create and show the alert dialog

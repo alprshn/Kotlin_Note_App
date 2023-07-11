@@ -56,9 +56,8 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         //Log.e("deneme","deneme28")
 
         //for Emoji Code
-        val unicode = notes.emoji
-        val emoji = getEmoji(unicode)//bura düzenlenecek
-        holder.textViewEmoji.text = emoji
+
+        holder.textViewEmoji.text = notes.emoji.toString()
         Log.e("deneme","deneme29")
 
         holder.textViewNoteTitle.text = notes.note_title
