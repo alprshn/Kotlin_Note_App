@@ -40,7 +40,7 @@ class NoteRecordActivity : AppCompatActivity() {
             //Veritabanı
             val note_title = binding.editTextText.text.toString().trim()
             val note = binding.editTextText2.text.toString().trim()
-            val emoji = findViewById(R.id.addEmoji)
+            val emoji = binding.
             //Emoji eklenecek val emoji=binding..text.toString().trim()
             //val note_date=binding.editTextText.text.toString().trim()
             // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
