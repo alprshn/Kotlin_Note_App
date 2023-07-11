@@ -119,6 +119,7 @@
 
         <Button
             android:id="@+id/emojiButton"
+            android:onClick="showAlertDialogButtonClicked"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="end|center_vertical"
