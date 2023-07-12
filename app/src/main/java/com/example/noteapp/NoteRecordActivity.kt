@@ -40,7 +40,8 @@ class NoteRecordActivity : AppCompatActivity() {
             //Veritabanı
             val note_title = binding.editTextText.text.toString().trim()
             val note = binding.editTextText2.text.toString().trim()
-            val emoji = findViewById(R.id.addEmoji)
+            val emoji = binding.textEmoji.text.toString().trim()
+
             //Emoji eklenecek val emoji=binding..text.toString().trim()
             //val note_date=binding.editTextText.text.toString().trim()
             // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
@@ -56,7 +57,7 @@ class NoteRecordActivity : AppCompatActivity() {
             }
 
             Log.e("deneme", "deneme1")
-            Notesdao().AddNote(vt, note, note_title, 0x1F60A, "2014", "null", "null")
+            Notesdao().AddNote(vt, note, note_title, emoji, "2014", "null", "null")
             Log.e("deneme", "deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()
@@ -99,6 +100,7 @@ class NoteRecordActivity : AppCompatActivity() {
     // Do something with the data coming from the AlertDialog
     private fun sendDialogDataToActivity(data: String) {
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
+        binding.textEmoji.text = data
     }
 
     private fun dpToPx(dp: Int): Int {
