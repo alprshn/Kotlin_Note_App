@@ -42,6 +42,8 @@ class NoteRecordActivity : AppCompatActivity() {
             val note = binding.editTextText2.text.toString().trim()
             val emoji = binding.textEmoji.text.toString().trim()
 
+            val cardColor = intent.getStringExtra("color")
+            Log.e("deneme", cardColor.toString())
             //Emoji eklenecek val emoji=binding..text.toString().trim()
             //val note_date=binding.editTextText.text.toString().trim()
             // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
@@ -56,8 +58,11 @@ class NoteRecordActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+
+
+
             Log.e("deneme", "deneme1")
-            Notesdao().AddNote(vt, note, note_title, emoji, "2014", "null", "null")
+            Notesdao().AddNote(vt, note, note_title, emoji, "2014", cardColor.toString(), "null")
             Log.e("deneme", "deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()

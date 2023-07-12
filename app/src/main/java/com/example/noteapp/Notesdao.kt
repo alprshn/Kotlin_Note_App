@@ -26,6 +26,7 @@ class Notesdao {
             notesList.add(note)
             Log.e("deneme","deneme10")
         }
+        Log.e("deneme","deneme105")
         return notesList
     }
 
@@ -50,7 +51,9 @@ class Notesdao {
         values.put("note_title", note_title)
         values.put("note_date", note_date)
         values.put("main_color", main_color)
+        Log.e("deneme","deneme103")
         values.put("note_color", note_color)
+        Log.e("deneme","deneme104")
         values.put("note", note)
         db.insertOrThrow("notes", null, values)
         Log.e("deneme","deneme14")

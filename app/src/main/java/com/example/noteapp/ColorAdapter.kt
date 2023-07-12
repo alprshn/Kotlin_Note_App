@@ -1,8 +1,11 @@
 package com.example.noteapp
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +25,20 @@ class ColorAdapter(
             val backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.square_rounded_corners)?.mutate()
             backgroundDrawable?.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
             colorView.background = backgroundDrawable
-            itemView.setOnClickListener { onItemClick(color) }
+
+            //Color gönderilecek
+
+            itemView.setOnClickListener {
+                Log.e("deneme","denem107")
+                Log.e("deneme", color.toString())
+                //Color gönderilecek
+                val intent = Intent(context, NoteRecordActivity::class.java)
+                Log.e("deneme", color.toString())
+                Log.e("deneme","denem106")
+                Log.e("deneme",Color.RED.toString())
+
+                intent.putExtra("color", color)
+                onItemClick(color) }
         }
     }
 
