@@ -41,7 +41,7 @@ class NoteRecordActivity : AppCompatActivity() {
             val note_title = binding.editTextText.text.toString().trim()
             val note = binding.editTextText2.text.toString().trim()
             val emoji = binding.textEmoji.text.toString().trim()
-
+            Log.e("deneme", "deneme200")
             val cardColor = intent.getIntExtra("color", 0)
             Log.e("deneme", cardColor.toString())
             //Emoji eklenecek val emoji=binding..text.toString().trim()

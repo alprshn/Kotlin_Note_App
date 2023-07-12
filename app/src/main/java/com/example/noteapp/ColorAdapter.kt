@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class ColorAdapter(
@@ -35,10 +36,10 @@ class ColorAdapter(
                 val intent = Intent(context , NoteRecordActivity::class.java)
                 Log.e("deneme", color.toString())
                 Log.e("deneme","denem106")
-                Log.e("deneme",Color.RED.toString())
+
 
                 intent.putExtra("color", color)
-                context.startActivity(intent)
+                startActivity(intent)
                 onItemClick(color) }
         }
     }
