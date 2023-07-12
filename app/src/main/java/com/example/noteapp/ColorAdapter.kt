@@ -32,12 +32,13 @@ class ColorAdapter(
                 Log.e("deneme","denem107")
                 Log.e("deneme", color.toString())
                 //Color gönderilecek
-                val intent = Intent(context, NoteRecordActivity::class.java)
+                val intent = Intent(context , NoteRecordActivity::class.java)
                 Log.e("deneme", color.toString())
                 Log.e("deneme","denem106")
                 Log.e("deneme",Color.RED.toString())
 
                 intent.putExtra("color", color)
+                context.startActivity(intent)
                 onItemClick(color) }
         }
     }

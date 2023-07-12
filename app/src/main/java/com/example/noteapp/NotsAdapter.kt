@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 
 class NotsAdapter(private val mContext: Context, private val notesList: List<Notes>) :
@@ -45,14 +46,15 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
     }
 
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
-        var cardColor: String
+        var cardColor: Int
         val notes = notesList.get(position)
-        Log.e("deneme","deneme100")
+        Log.e("deneme", "deneme100")
         cardColor = notes.note_color
-        Log.e("deneme",cardColor)
-        Log.e("deneme","deneme101")
-        holder.notesCard.setCardBackgroundColor(Color.parseColor(/* colorString = */ cardColor))
-        Log.e("deneme","deneme102")
+        Log.e("deneme", cardColor.toString())
+        Log.e("deneme", "deneme101")
+        holder.notesCard.setCardBackgroundColor(cardColor)
+        Log.e("deneme", "deneme102")
+        Log.e("deneme", Color.RED.toString())
         //for Emoji Code
         holder.textViewEmoji.text = notes.emoji.toString()
         holder.textViewNoteTitle.text = notes.note_title

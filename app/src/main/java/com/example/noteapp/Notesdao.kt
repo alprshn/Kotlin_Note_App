@@ -20,7 +20,7 @@ class Notesdao {
             ,c.getString(c.getColumnIndex("note_title"))
             ,c.getString(c.getColumnIndex("note_date"))
             ,c.getString(c.getColumnIndex("main_color"))
-            ,c.getString(c.getColumnIndex("note_color"))
+            ,c.getInt(c.getColumnIndex("note_color"))
             ,c.getString(c.getColumnIndex("note")))
             Log.e("deneme","deneme23")
             notesList.add(note)
@@ -42,7 +42,7 @@ class Notesdao {
         note_title: String,
         emoji: String,
         note_date: String,
-        note_color: String,
+        note_color: Int,
         main_color:String
     ) {
         val db = hd.writableDatabase
@@ -68,7 +68,7 @@ class Notesdao {
         note_title: String,
         emoji: String,
         note_date: String,
-        note_color: String
+        note_color: Int
     ) {
         val db = hd.writableDatabase
         val values = ContentValues()
