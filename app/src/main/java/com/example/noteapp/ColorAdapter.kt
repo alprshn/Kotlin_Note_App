@@ -30,16 +30,6 @@ class ColorAdapter(
             //Color gönderilecek
 
             itemView.setOnClickListener {
-                Log.e("deneme","denem107")
-                Log.e("deneme", color.toString())
-                //Color gönderilecek
-                val intent = Intent(context , NoteRecordActivity::class.java)
-                Log.e("deneme", color.toString())
-                Log.e("deneme","denem106")
-
-
-                intent.putExtra("color", color)
-                startActivity(intent)
                 onItemClick(color) }
         }
     }

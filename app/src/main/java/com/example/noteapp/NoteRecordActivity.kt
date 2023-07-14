@@ -143,6 +143,7 @@ class NoteRecordActivity : AppCompatActivity() {
             )
             layoutManager = GridLayoutManager(this@NoteRecordActivity, numColumns)
             setPadding(padding, dpToPx(20), padding, padding) // Convert padding to pixels
+
             adapter = ColorAdapter(this@NoteRecordActivity, colors) { selectedColor ->
                 // Do something with the selected color
 
