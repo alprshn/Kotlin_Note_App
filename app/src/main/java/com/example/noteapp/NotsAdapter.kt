@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 
@@ -20,7 +21,6 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         var textViewEmoji: TextView
         var textViewNoteTitle: TextView
         var textViewNoteDate: TextView
-
         init {
             notesCard = design.findViewById(R.id.CardView)
             textViewEmoji = design.findViewById(R.id.emoji)
@@ -55,12 +55,14 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         holder.notesCard.setCardBackgroundColor(cardColor)
         Log.e("deneme", "deneme102")
         Log.e("deneme", Color.RED.toString())
+
         //for Emoji Code
+
         holder.textViewEmoji.text = notes.emoji.toString()
         holder.textViewNoteTitle.text = notes.note_title
         holder.textViewNoteDate.text = notes.note_date
 
-       
+
 
 
 

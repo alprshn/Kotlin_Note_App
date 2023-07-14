@@ -20,6 +20,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.databinding.ActivityNoteRecordBinding
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class NoteRecordActivity : AppCompatActivity() {
@@ -42,7 +45,7 @@ class NoteRecordActivity : AppCompatActivity() {
             val note = binding.editTextText2.text.toString().trim()
             val emoji = binding.textEmoji.text.toString().trim()
             val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
-
+            val currentTime = getCurrentTime()
             Log.e("deneme"," cardColor.toString()")
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
 
@@ -66,7 +69,7 @@ class NoteRecordActivity : AppCompatActivity() {
 
 
             Log.e("deneme", "deneme1")
-            Notesdao().AddNote(vt, note, note_title, emoji, "2014", cardColor, "null")
+            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor, "null")
             Log.e("deneme", "deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()
@@ -84,6 +87,12 @@ class NoteRecordActivity : AppCompatActivity() {
 
     }
 
+
+    private fun getCurrentTime(): String {
+        val currentTime = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault())
+        return dateFormat.format(currentTime)
+    }
 
     fun showAlertDialogButtonClicked() {
         // Create an alert builder
