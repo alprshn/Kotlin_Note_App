@@ -59,6 +59,12 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         holder.textViewEmoji.text = notes.emoji.toString()
         holder.textViewNoteTitle.text = notes.note_title
         holder.textViewNoteDate.text = notes.note_date
+
+       
+
+
+
+
         holder.notesCard.setOnClickListener {
             val intent = Intent(mContext, DetailsActivity::class.java)
             intent.putExtra("object", notes)

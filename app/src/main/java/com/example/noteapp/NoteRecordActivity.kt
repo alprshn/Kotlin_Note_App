@@ -41,8 +41,12 @@ class NoteRecordActivity : AppCompatActivity() {
             val note_title = binding.editTextText.text.toString().trim()
             val note = binding.editTextText2.text.toString().trim()
             val emoji = binding.textEmoji.text.toString().trim()
-            Log.e("deneme", "deneme200")
-            val cardColor = intent.getIntExtra("color", 0)
+            val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
+
+            Log.e("deneme"," cardColor.toString()")
+            val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
+
+
             Log.e("deneme", cardColor.toString())
             //Emoji eklenecek val emoji=binding..text.toString().trim()
             //val note_date=binding.editTextText.text.toString().trim()
