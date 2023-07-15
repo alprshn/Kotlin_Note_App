@@ -46,7 +46,7 @@ class NoteRecordActivity : AppCompatActivity() {
             val emoji = binding.textEmoji.text.toString().trim()
             val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
             val currentTime = getCurrentTime()
-            Log.e("deneme"," cardColor.toString()")
+            Log.e("deneme", " cardColor.toString()")
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
 
 
@@ -69,7 +69,7 @@ class NoteRecordActivity : AppCompatActivity() {
 
 
             Log.e("deneme", "deneme1")
-            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor, "null")
+            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor)
             Log.e("deneme", "deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()

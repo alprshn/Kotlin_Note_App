@@ -49,31 +49,21 @@ class MainActivity : AppCompatActivity() {
             .transform(CircleCrop())
             .into(binding.imageView)
 
-
-
-
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = LinearLayoutManager(this)
 
 
         vt = HelperDatabase(this)
-        Log.e("deneme","deneme7")
+        Log.e("deneme", "deneme7")
         notesLists = Notesdao().AllNotes(vt)
-        Log.e("deneme","deneme6")
+        Log.e("deneme", "deneme6")
         adapter = NotsAdapter(this, notesLists)
-        Log.e("deneme","deneme8")
+        Log.e("deneme", "deneme8")
         binding.rv.adapter = adapter
-        Log.e("deneme","deneme9")
+        Log.e("deneme", "deneme9")
         binding.floatingActionButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, NoteRecordActivity::class.java))
         }
-
-
-        content = findViewById(R.id.content)
-        val colorPickerButton: Button = findViewById(R.id.colorPicker)
-        colorPickerButton.setOnClickListener { showColorPickerDialog() }
-
-
         ChangeViev()
 
 
@@ -112,83 +102,5 @@ class MainActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
-
-
-
-
-
-    private fun showColorPickerDialog() {
-
-        val colors = listOf(
-            Color.CYAN,
-            Color.rgb(179, 157, 219),
-            Color.MAGENTA,
-            Color.rgb(245, 245, 220),
-            Color.YELLOW,
-            Color.rgb(169, 169, 169),
-            Color.GREEN,
-            Color.rgb(244, 164, 96),
-            Color.BLUE,
-            Color.RED,
-            Color.rgb(255, 228, 181),
-            Color.rgb(72, 61, 139),
-            Color.rgb(205, 92, 92),
-            Color.rgb(255, 165, 0),
-            Color.rgb(102, 205, 170)
-        )
-
-        val numColumns = 5 // Desired number of columns
-        val padding = dpToPx(15) // Convert 15 dp to pixels
-        val spacing = dpToPx(15) // Set the spacing between items in dp
-
-        val recyclerView = RecyclerView(this).apply {
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            layoutManager = GridLayoutManager(this@MainActivity, numColumns)
-            setPadding(padding, dpToPx(20), padding, padding) // Convert padding to pixels
-            adapter = ColorAdapter(this@MainActivity, colors) { selectedColor ->
-                // Do something with the selected color
-
-                // Change Background Color
-                content.setBackgroundColor(
-                    ColorUtils.blendARGB(
-                        selectedColor,
-                        Color.BLACK,
-                        0.3f
-                    )
-                ) // Make it darker
-                // Change Status Bar Background Color
-                window.statusBarColor =
-                    ColorUtils.blendARGB(selectedColor, Color.BLACK, 0.1f) // Make it darker
-                // Change the App Bar Background Color
-                supportActionBar?.setBackgroundDrawable(ColorDrawable(selectedColor))
-
-                colorPickerDialog.dismiss()
-            }
-            addItemDecoration(GridSpacingItemDecoration(numColumns, spacing, true))
-        }
-
-        colorPickerDialog = AlertDialog.Builder(this, R.style.ShowAlertDialogTheme)
-            .setTitle("Choose a color")
-            .setView(recyclerView)
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-        colorPickerDialog.show()
-    }
-
-    private fun dpToPx(dp: Int): Int {
-        return (dp * resources.displayMetrics.density).toInt()
-    }
-
-
-
-
-
-
-
 
 }
