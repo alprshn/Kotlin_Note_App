@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         Glide.with(this)
-            .load(binding.imageView)
+            .load("https://external-preview.redd.it/yeni-mit-ba%C5%9Fkan%C4%B1-i%CC%87brahim-kal%C4%B1n-profil-foto%C4%9Fraf%C4%B1n%C4%B1-v0-nggRZ7poIIut9AKU26ebcMHE0dlqyHvZCNF80ZJU1Yg.jpg?auto=webp&s=76ca81c4df7b9c2128d1e7821aa00495dbc87f97")
             .transform(CircleCrop())
             .into(binding.imageView)
 
