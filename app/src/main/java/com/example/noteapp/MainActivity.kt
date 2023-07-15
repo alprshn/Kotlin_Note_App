@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SearchView
 
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -44,13 +45,20 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+
+        val galleryImage = registerForActivityResult(ActivityResultContracts.GetContent(),{
+            binding.imageView.setImageURI(it)
+        })
+
+        binding.imageView.setOnClickListener {
+            galleryImage.launch("image/*")
+        }
+
         Glide.with(this)
-            .load("https://external-preview.redd.it/yeni-mit-ba%C5%9Fkan%C4%B1-i%CC%87brahim-kal%C4%B1n-profil-foto%C4%9Fraf%C4%B1n%C4%B1-v0-nggRZ7poIIut9AKU26ebcMHE0dlqyHvZCNF80ZJU1Yg.jpg?auto=webp&s=76ca81c4df7b9c2128d1e7821aa00495dbc87f97")
+            .load(binding.imageView)
             .transform(CircleCrop())
             .into(binding.imageView)
-
-
-
 
         binding.rv.setHasFixedSize(true)
         binding.rv.layoutManager = LinearLayoutManager(this)
