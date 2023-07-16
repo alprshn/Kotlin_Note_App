@@ -25,9 +25,12 @@ import java.util.Calendar
 import java.util.Locale
 
 class DetailsActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityDetailsBinding
+    private lateinit var binding: ActivityDetailsBinding
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
+    private lateinit var getNote: Notes
+    private lateinit var hd: HelperDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -35,7 +38,9 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         val constraintLayout = findViewById<ConstraintLayout>(R.id.contentDetails)
 
-        val notes =intent.getSerializableExtra("object") as Notes
+        val notes = intent.getSerializableExtra("object") as Notes
+
+        hd = HelperDatabase(this)
 
         binding.editTitle.setText(notes.note_title)
         binding.editNote.setText(notes.note)
@@ -52,32 +57,20 @@ class DetailsActivity : AppCompatActivity() {
             notes.note_color = (constraintLayout.background as? ColorDrawable)?.color ?: 0
 
 
-            val note_title = binding.editTextText.text.toString().trim()
-            val note = binding.editTextText2.text.toString().trim()
-            val emoji = binding.textEmoji.text.toString().trim()
+            val note_title = binding.editTitle.text.toString().trim()
+            val note = binding.editNote.text.toString().trim()
+            val emoji = binding.detailsEmojiText.text.toString().trim()
             val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
             val currentTime = getCurrentTime()
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
 
-
-
-            if (TextUtils.isEmpty((note_title))) {
-                Snackbar.make(binding.toolbar, "Note Başlığı Giriniz", Snackbar.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (TextUtils.isEmpty((note))) {
-                Snackbar.make(binding.toolbar, "Note Giriniz", Snackbar.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            Notesdao().UpdateNote(vt, note, note_title, emoji, currentTime, cardColor)
+            Notesdao().UpdateNote(hd, getNote.note_id, note, note_title, emoji, currentTime, cardColor)
 
 
 
 
 
-            startActivity(Intent(this@DetailsActivity,MainActivity::class.java))
+            startActivity(Intent(this@DetailsActivity, MainActivity::class.java))
             finish()
         }
 
@@ -92,6 +85,7 @@ class DetailsActivity : AppCompatActivity() {
         val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault())
         return dateFormat.format(currentTime)
     }
+
     fun showAlertDialogButtonClicked() {
         // Create an alert builder
         val builder = AlertDialog.Builder(this)
@@ -111,13 +105,16 @@ class DetailsActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
+
     private fun sendDialogDataToActivity(data: String) {
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
         binding.detailsEmojiText.text = data
     }
+
     private fun dpToPx(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
+
     private fun showColorPickerDialog() {
 
         val colors = listOf(
