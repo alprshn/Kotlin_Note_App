@@ -1,19 +1,26 @@
 package com.example.noteapp
 
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.databinding.ActivityDetailsBinding
 import com.example.noteapp.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailsBinding
@@ -24,12 +31,23 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val constraintLayout = findViewById<ConstraintLayout>(R.id.contentDetails)
 
         val notes =intent.getSerializableExtra("object") as Notes
 
         binding.editTitle.setText(notes.note_title)
+        binding.editNote.setText(notes.note)
+        binding.detailsEmojiText.setText(notes.emoji)
+
+
+
+        binding.detailsEmojiPicker.setOnClickListener {
+            showAlertDialogButtonClicked()
+        }
 
         binding.EditButton.setOnClickListener {
+            notes.note_date = getCurrentTime()
+            notes.note_color = (constraintLayout.background as? ColorDrawable)?.color ?: 0
             startActivity(Intent(this@DetailsActivity,MainActivity::class.java))
             finish()
         }
@@ -40,7 +58,34 @@ class DetailsActivity : AppCompatActivity() {
     }
 
 
+    private fun getCurrentTime(): String {
+        val currentTime = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault())
+        return dateFormat.format(currentTime)
+    }
+    fun showAlertDialogButtonClicked() {
+        // Create an alert builder
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Name")
 
+        // set the custom layout
+        val customLayout: View = layoutInflater.inflate(R.layout.emoji_layout, null)
+        builder.setView(customLayout)
+
+        // add a button
+        builder.setPositiveButton("OK") { dialog: DialogInterface?, which: Int ->
+            // send data from the AlertDialog to the Activity
+            val editText = customLayout.findViewById<EditText>(R.id.addEmoji)
+            sendDialogDataToActivity(editText.text.toString())
+        }
+        // create and show the alert dialog
+        val dialog = builder.create()
+        dialog.show()
+    }
+    private fun sendDialogDataToActivity(data: String) {
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
+        binding.detailsEmojiText.text = data
+    }
     private fun dpToPx(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }

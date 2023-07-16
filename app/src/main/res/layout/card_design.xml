@@ -6,14 +6,14 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
     android:layout_marginTop="10dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     app:cardCornerRadius="20dp"
     app:cardBackgroundColor="@color/white">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_height="125dp">
 
         <TextView
             android:id="@+id/emoji"
@@ -23,7 +23,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="4dp"
+
             android:padding="4dp"
             android:text="N"
             android:textColor="@color/black"
@@ -34,28 +34,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="4dp"
             android:layout_toRightOf="@id/emoji"
             android:padding="4dp"
             android:text="Note Ttile"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_centerVertical="true"
+            android:textSize="20sp"
+
+
             />
+
+        <TextView
+            android:id="@+id/noteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toRightOf="@id/emoji"
+            android:padding="4dp"
+            android:layout_below="@id/noteTitle"
+            android:text="Note Ttile"
+            android:textColor="#373434"
+            android:textSize="12sp"
+            />
+
 
         <TextView
             android:id="@+id/noteDateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/emoji"
+            android:layout_below="@id/noteText"
             android:layout_alignLeft="@id/noteTitle"
             android:layout_gravity="start"
-
             android:layout_marginEnd="4dp"
             android:padding="4dp"
             android:text="aaaaaaaaaaaaaaaaaaaa"
-            android:textColor="#f1f1f1"
+            android:textColor="#7E7C7C"
             android:textSize="10sp" />
 
     </RelativeLayout>

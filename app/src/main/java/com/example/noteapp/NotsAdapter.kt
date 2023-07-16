@@ -21,12 +21,13 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         var textViewEmoji: TextView
         var textViewNoteTitle: TextView
         var textViewNoteDate: TextView
+        var textViewNote : TextView
         init {
             notesCard = design.findViewById(R.id.CardView)
             textViewEmoji = design.findViewById(R.id.emoji)
             textViewNoteTitle = design.findViewById(R.id.noteTitle)
             textViewNoteDate = design.findViewById(R.id.noteDateText)
-
+            textViewNote = design.findViewById(R.id.noteText)
         }
 
 
@@ -61,7 +62,7 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         holder.textViewEmoji.text = notes.emoji.toString()
         holder.textViewNoteTitle.text = notes.note_title
         holder.textViewNoteDate.text = notes.note_date
-
+        holder.textViewNote.text = notes.note
 
 
 
