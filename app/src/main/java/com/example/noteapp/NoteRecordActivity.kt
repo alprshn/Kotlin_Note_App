@@ -46,14 +46,7 @@ class NoteRecordActivity : AppCompatActivity() {
             val emoji = binding.textEmoji.text.toString().trim()
             val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
             val currentTime = getCurrentTime()
-            Log.e("deneme", " cardColor.toString()")
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
-
-
-            Log.e("deneme", cardColor.toString())
-            //Emoji eklenecek val emoji=binding..text.toString().trim()
-            //val note_date=binding.editTextText.text.toString().trim()
-            // Color kısmı düzenlenecek val note_color=binding.editTextText.text.toString().trim()
 
             if (TextUtils.isEmpty((note_title))) {
                 Snackbar.make(binding.toolbar, "Note Başlığı Giriniz", Snackbar.LENGTH_SHORT).show()

@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.databinding.ActivityDetailsBinding
 import com.example.noteapp.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -48,6 +50,33 @@ class DetailsActivity : AppCompatActivity() {
         binding.EditButton.setOnClickListener {
             notes.note_date = getCurrentTime()
             notes.note_color = (constraintLayout.background as? ColorDrawable)?.color ?: 0
+
+
+            val note_title = binding.editTextText.text.toString().trim()
+            val note = binding.editTextText2.text.toString().trim()
+            val emoji = binding.textEmoji.text.toString().trim()
+            val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
+            val currentTime = getCurrentTime()
+            val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
+
+
+
+            if (TextUtils.isEmpty((note_title))) {
+                Snackbar.make(binding.toolbar, "Note Başlığı Giriniz", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (TextUtils.isEmpty((note))) {
+                Snackbar.make(binding.toolbar, "Note Giriniz", Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            Notesdao().UpdateNote(vt, note, note_title, emoji, currentTime, cardColor)
+
+
+
+
+
             startActivity(Intent(this@DetailsActivity,MainActivity::class.java))
             finish()
         }
