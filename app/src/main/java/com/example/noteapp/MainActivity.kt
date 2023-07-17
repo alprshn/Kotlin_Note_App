@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
     private lateinit var vt: HelperDatabase
-    lateinit var secondCard: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -64,16 +63,16 @@ class MainActivity : AppCompatActivity() {
         adapter = NotsAdapter(this, notesLists)
         Log.e("deneme","deneme8")
         binding.rv.adapter = adapter
-
-
         Log.e("deneme","deneme9")
         binding.floatingActionButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, NoteRecordActivity::class.java))
         }
 
 
-
         ChangeViev()
+
+
+
 
 
     }

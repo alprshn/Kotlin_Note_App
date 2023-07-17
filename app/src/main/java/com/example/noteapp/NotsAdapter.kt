@@ -12,11 +12,16 @@ import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat.recreate
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 
 class NotsAdapter(private val mContext: Context, private val notesList: List<Notes>) :
     RecyclerView.Adapter<NotsAdapter.CardDesignHolder>() {
+    private lateinit var note:Notes
+    private lateinit var hd:HelperDatabase
+    private lateinit var context: Context
 
     inner class CardDesignHolder(design: View) : RecyclerView.ViewHolder(design) {
         var notesCard: CardView
@@ -85,10 +90,21 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.delete -> {
+                    Log.e("hata","hatta1")
+                    hd = HelperDatabase(mContext)
+                    Log.e("hata","hatta2")
+
+                    Notesdao().NoteDelete(hd,notes.note_id)
+
+                    // Start the refresh background task.
+                    // This method calls setRefreshing(false) when it's finished.
+
+
+                    Log.e("hata","hatta3")
+
                     Toast.makeText(mContext, "Shared", Toast.LENGTH_SHORT).show()
                     true
                 }
-
                 else -> {
                     true
                 }
@@ -111,7 +127,6 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             }
             true
         }
-
     }
 
 

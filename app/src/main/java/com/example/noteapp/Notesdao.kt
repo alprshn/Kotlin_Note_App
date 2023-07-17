@@ -1,14 +1,18 @@
 package com.example.noteapp
 
 import android.content.ContentValues
+import android.content.Context
 import android.util.Log
 
 class Notesdao {
 
+    private lateinit var adapter: NotsAdapter
+    private lateinit var context: Context
+    val notesList = ArrayList<Notes>()
+
 
     fun AllNotes(hd: HelperDatabase): ArrayList<Notes> {
         val db = hd.writableDatabase
-        val notesList = ArrayList<Notes>()
         val c = db.rawQuery("SELECT*FROM notes", null)
         Log.e("deneme","deneme11")
 
@@ -33,6 +37,7 @@ class Notesdao {
         val db = hd.writableDatabase
         db.delete("notes", "note_id=?", arrayOf(note_id.toString()))
         db.close()
+
     }
 
     fun AddNote(
