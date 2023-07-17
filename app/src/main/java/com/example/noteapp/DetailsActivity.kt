@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -41,31 +42,50 @@ class DetailsActivity : AppCompatActivity() {
         val notes = intent.getSerializableExtra("object") as Notes
 
         hd = HelperDatabase(this)
-
+        Log.e("detay", "detay5")
         binding.editTitle.setText(notes.note_title)
+        Log.e("detay", "detay6")
         binding.editNote.setText(notes.note)
+        Log.e("detay", "detay7")
         binding.detailsEmojiText.setText(notes.emoji)
 
-
+        Log.e("detay", "detay8")
 
         binding.detailsEmojiPicker.setOnClickListener {
             showAlertDialogButtonClicked()
         }
-
+        Log.e("detay", "detay2")
         binding.EditButton.setOnClickListener {
-            notes.note_date = getCurrentTime()
-            notes.note_color = (constraintLayout.background as? ColorDrawable)?.color ?: 0
 
-
-            val note_title = binding.editTitle.text.toString().trim()
-            val note = binding.editNote.text.toString().trim()
-            val emoji = binding.detailsEmojiText.text.toString().trim()
-            val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
+            val note_title = binding.editTitle.text.toString()
+            Log.e("deneme", "detay1")
+            val note = binding.editNote.text.toString()
+            Log.e("deneme", "detay9")
+            val emoji = binding.detailsEmojiText.text.toString()
+            Log.e("deneme", "detay10")
+            val constraintLayout = findViewById<ConstraintLayout>(R.id.contentDetails)
+            Log.e("deneme", "detay11")
             val currentTime = getCurrentTime()
+            Log.e("deneme", "detay12")
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
+            Log.e("deneme", "detay3")
 
-            Notesdao().UpdateNote(hd, getNote.note_id, note, note_title, emoji, currentTime, cardColor)
+            try {
+                Notesdao().UpdateNote(
+                    hd,
+                    notes.note_id,
+                    note,
+                    note_title,
+                    emoji,
+                    currentTime,
+                    cardColor
+                )
+            } catch (e: ArithmeticException){
+                Log.e("deneme", "Burası çalışmıyor")
+            }
 
+
+            Log.e("deneme", "detay4")
 
 
 

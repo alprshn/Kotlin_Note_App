@@ -67,16 +67,18 @@ class Notesdao {
         note_date: String,
         note_color: Int
     ) {
+        Log.e("deneme","detay524")
         val db = hd.writableDatabase
         val values = ContentValues()
-
+        Log.e("deneme","deneme525")
         values.put("note", note)
         values.put("note_title", note_title)
         values.put("emoji", emoji)
         values.put("note_date", note_date)
         values.put("note_color", note_color)
-
-        db.update("notes", values, "note_id", arrayOf(note_id.toString()))
+        Log.e("deneme","deneme526")
+        db.update("notes", values, "note_id=?", arrayOf(note_id.toString()))
+        Log.e("deneme","deneme57")
         db.close()
     }
 }

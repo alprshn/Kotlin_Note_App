@@ -59,10 +59,14 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
 
         //for Emoji Code
 
-        holder.textViewEmoji.text = notes.emoji.toString()
+        holder.textViewEmoji.text = notes.emoji
+        Log.e("deneme", "deneme103")
         holder.textViewNoteTitle.text = notes.note_title
+        Log.e("deneme", "deneme104")
         holder.textViewNoteDate.text = notes.note_date
+        Log.e("deneme", "deneme105")
         holder.textViewNote.text = notes.note
+        Log.e("deneme", "deneme106")
 
 
 
