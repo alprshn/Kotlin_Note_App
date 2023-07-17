@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
@@ -22,7 +23,8 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         var textViewEmoji: TextView
         var textViewNoteTitle: TextView
         var textViewNoteDate: TextView
-        var textViewNote : TextView
+        var textViewNote: TextView
+
         init {
             notesCard = design.findViewById(R.id.CardView)
             textViewEmoji = design.findViewById(R.id.emoji)
@@ -47,8 +49,6 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         return String(Character.toChars(uni))
     }
 
-
-
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
         var cardColor: Int
         val notes = notesList.get(position)
@@ -72,9 +72,6 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         Log.e("deneme", "deneme106")
 
 
-
-
-
         holder.notesCard.setOnClickListener {
             val intent = Intent(mContext, DetailsActivity::class.java)
             intent.putExtra("object", notes)
@@ -82,11 +79,39 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         }
 
 
-        holder.notesCard.setOnLongClickListener{
-            Log.e("merhaba","merhaba")
-            return@setOnLongClickListener true
+        val popupMenu = PopupMenu(mContext, holder.notesCard)
+        popupMenu.inflate(R.menu.context_menu)
+
+        popupMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.delete -> {
+                    Toast.makeText(mContext, "Shared", Toast.LENGTH_SHORT).show()
+                    true
+                }
+
+                else -> {
+                    true
+                }
+            }
 
         }
+
+        // event on long press on image
+        holder.notesCard.setOnLongClickListener {
+            try {
+                val popup = PopupMenu::class.java.getDeclaredField("mPopup")
+                popup.isAccessible = true
+                val menu = popup.get(popupMenu)
+                menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                    .invoke(menu, true)
+            } catch (e: Exception) {
+                Log.d("error", e.toString())
+            } finally {
+                popupMenu.show()
+            }
+            true
+        }
+
     }
 
 

@@ -9,14 +9,16 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.SearchView
+import androidx.cardview.widget.CardView
 
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
     private lateinit var vt: HelperDatabase
+    lateinit var secondCard: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,10 +64,14 @@ class MainActivity : AppCompatActivity() {
         adapter = NotsAdapter(this, notesLists)
         Log.e("deneme","deneme8")
         binding.rv.adapter = adapter
+
+
         Log.e("deneme","deneme9")
         binding.floatingActionButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, NoteRecordActivity::class.java))
         }
+
+
 
         ChangeViev()
 
@@ -98,9 +105,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onKeyLongPress(keyCode: Int, event: KeyEvent?): Boolean {
-        return super.onKeyLongPress(keyCode, event)
-    }
+
 
     override fun onBackPressed() {
         val intent = Intent(Intent.ACTION_MAIN)
