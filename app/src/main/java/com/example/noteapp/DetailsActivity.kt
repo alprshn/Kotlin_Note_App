@@ -70,19 +70,19 @@ class DetailsActivity : AppCompatActivity() {
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
             Log.e("deneme", "detay3")
 
-            try {
-                Notesdao().UpdateNote(
-                    hd,
-                    notes.note_id,
-                    note,
-                    note_title,
-                    emoji,
-                    currentTime,
-                    cardColor
-                )
-            } catch (e: ArithmeticException){
-                Log.e("deneme", "Burası çalışmıyor")
-            }
+
+            Notesdao().UpdateNote(
+                hd,
+                notes.note_id,
+                note,
+                note_title,
+                emoji,
+                currentTime,
+                cardColor
+            )
+
+            Log.e("deneme", "Burası çalışmıyor")
+
 
 
             Log.e("deneme", "detay4")

@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
@@ -96,6 +97,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onKeyLongPress(keyCode: Int, event: KeyEvent?): Boolean {
+        return super.onKeyLongPress(keyCode, event)
+    }
 
     override fun onBackPressed() {
         val intent = Intent(Intent.ACTION_MAIN)

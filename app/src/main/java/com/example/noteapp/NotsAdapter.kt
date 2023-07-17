@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
@@ -46,6 +47,8 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         return String(Character.toChars(uni))
     }
 
+
+
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
         var cardColor: Int
         val notes = notesList.get(position)
@@ -77,5 +80,14 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             intent.putExtra("object", notes)
             mContext.startActivity(intent)
         }
+
+
+        holder.notesCard.setOnLongClickListener{
+            Log.e("merhaba","merhaba")
+            return@setOnLongClickListener true
+
+        }
     }
+
+
 }
