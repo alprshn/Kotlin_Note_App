@@ -57,22 +57,19 @@ class MainActivity : AppCompatActivity() {
 
 
         vt = HelperDatabase(this)
-        Log.e("deneme","deneme7")
+        Log.e("deneme", "deneme7")
         notesLists = Notesdao().AllNotes(vt)
-        Log.e("deneme","deneme6")
+        Log.e("deneme", "deneme6")
         adapter = NotsAdapter(this, notesLists)
-        Log.e("deneme","deneme8")
+        Log.e("deneme", "deneme8")
         binding.rv.adapter = adapter
-        Log.e("deneme","deneme9")
+        Log.e("deneme", "deneme9")
         binding.floatingActionButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, NoteRecordActivity::class.java))
         }
 
 
         ChangeViev()
-
-
-
 
 
     }
@@ -102,8 +99,6 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
-
 
 
     override fun onBackPressed() {

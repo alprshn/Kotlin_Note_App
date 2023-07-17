@@ -36,6 +36,8 @@ class Notesdao {
     fun NoteDelete(hd: HelperDatabase, note_id: Int) {
         val db = hd.writableDatabase
         db.delete("notes", "note_id=?", arrayOf(note_id.toString()))
+
+
         db.close()
 
     }

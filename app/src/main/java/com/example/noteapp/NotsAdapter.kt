@@ -92,10 +92,11 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
                 R.id.delete -> {
                     Log.e("hata","hatta1")
                     hd = HelperDatabase(mContext)
-                    Log.e("hata","hatta2")
+                    Log.e("hata",position.toString())
 
                     Notesdao().NoteDelete(hd,notes.note_id)
 
+                    
                     // Start the refresh background task.
                     // This method calls setRefreshing(false) when it's finished.
 
