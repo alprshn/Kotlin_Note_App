@@ -6,6 +6,7 @@
         <item name="colorPrimary">#000000</item>
 
     </style>
+    <style name="splashScreenTheme" parent="Theme.AppCompat.DayNight.NoActionBar"/>
 
     <style name="ShowAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">#3F51B5</item>
