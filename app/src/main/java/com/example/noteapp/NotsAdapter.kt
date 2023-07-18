@@ -96,7 +96,7 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
 
                     Notesdao().NoteDelete(hd,notes.note_id)
 
-                    
+
                     // Start the refresh background task.
                     // This method calls setRefreshing(false) when it's finished.
 

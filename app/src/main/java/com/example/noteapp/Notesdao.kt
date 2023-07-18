@@ -2,7 +2,9 @@ package com.example.noteapp
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 
 class Notesdao {
 
@@ -36,7 +38,6 @@ class Notesdao {
     fun NoteDelete(hd: HelperDatabase, note_id: Int) {
         val db = hd.writableDatabase
         db.delete("notes", "note_id=?", arrayOf(note_id.toString()))
-
 
         db.close()
 

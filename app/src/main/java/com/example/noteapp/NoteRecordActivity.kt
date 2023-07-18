@@ -122,20 +122,16 @@ class NoteRecordActivity : AppCompatActivity() {
 
         val colors = listOf(
             Color.CYAN,
-            Color.rgb(179, 157, 219),
+            Color.rgb(255, 204, 102),
             Color.MAGENTA,
-            Color.rgb(245, 245, 220),
+            Color.rgb(255, 153, 0),
             Color.YELLOW,
-            Color.rgb(169, 169, 169),
+            Color.rgb(235, 235, 242),
             Color.GREEN,
-            Color.rgb(244, 164, 96),
+            Color.rgb(221, 226, 252),
             Color.BLUE,
             Color.RED,
-            Color.rgb(255, 228, 181),
-            Color.rgb(72, 61, 139),
-            Color.rgb(205, 92, 92),
-            Color.rgb(255, 165, 0),
-            Color.rgb(102, 205, 170)
+            Color.rgb(149, 134, 124)
         )
 
         val numColumns = 5 // Desired number of columns
