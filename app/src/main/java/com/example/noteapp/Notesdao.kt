@@ -23,7 +23,6 @@ class Notesdao {
         }
         return notesList
     }
-
     fun NoteDelete(hd: HelperDatabase, note_id: Int) {
         val db = hd.writableDatabase
         db.delete("notes", "note_id=?", arrayOf(note_id.toString()))
@@ -31,7 +30,6 @@ class Notesdao {
         db.close()
 
     }
-
     fun AddNote(
         hd: HelperDatabase,
         note: String,
@@ -50,7 +48,6 @@ class Notesdao {
         db.insertOrThrow("notes", null, values)
         db.close()
     }
-
     fun UpdateNote(
         hd: HelperDatabase,
         note_id: Int,
