@@ -1,16 +1,12 @@
 package com.example.noteapp
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class ColorAdapter(
@@ -23,14 +19,14 @@ class ColorAdapter(
         private val colorView: View = itemView.findViewById(R.id.colorView)
 
         fun bind(color: Int) {
-            val backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.square_rounded_corners)?.mutate()
+            val backgroundDrawable =
+                ContextCompat.getDrawable(context, R.drawable.square_rounded_corners)?.mutate()
             backgroundDrawable?.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN)
             colorView.background = backgroundDrawable
 
-            //Color gönderilecek
-
             itemView.setOnClickListener {
-                onItemClick(color) }
+                onItemClick(color)
+            }
         }
     }
 

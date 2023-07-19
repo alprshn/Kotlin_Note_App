@@ -7,8 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -19,8 +17,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.databinding.ActivityDetailsBinding
-import com.example.noteapp.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -29,48 +25,33 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var colorPickerDialog: AlertDialog
     private lateinit var content: ConstraintLayout
-    private lateinit var getNote: Notes
     private lateinit var hd: HelperDatabase
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val constraintLayout = findViewById<ConstraintLayout>(R.id.contentDetails)
 
         val notes = intent.getSerializableExtra("object") as Notes
-
         hd = HelperDatabase(this)
-        Log.e("detay", "detay5")
         binding.editTitle.setText(notes.note_title)
-        Log.e("detay", "detay6")
         binding.editNote.setText(notes.note)
-        Log.e("detay", "detay7")
         binding.detailsEmojiText.setText(notes.emoji)
-
-        Log.e("detay", "detay8")
 
         binding.detailsEmojiPicker.setOnClickListener {
             showAlertDialogButtonClicked()
         }
-        Log.e("detay", "detay2")
+        binding.detailsBackButton.setOnClickListener {
+            onBackPressed()
+        }
         binding.EditButton.setOnClickListener {
 
             val note_title = binding.editTitle.text.toString()
-            Log.e("deneme", "detay1")
             val note = binding.editNote.text.toString()
-            Log.e("deneme", "detay9")
             val emoji = binding.detailsEmojiText.text.toString()
-            Log.e("deneme", "detay10")
             val constraintLayout = findViewById<ConstraintLayout>(R.id.contentDetails)
-            Log.e("deneme", "detay11")
             val currentTime = getCurrentTime()
-            Log.e("deneme", "detay12")
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
-            Log.e("deneme", "detay3")
-
-
             Notesdao().UpdateNote(
                 hd,
                 notes.note_id,
@@ -80,15 +61,6 @@ class DetailsActivity : AppCompatActivity() {
                 currentTime,
                 cardColor
             )
-
-            Log.e("deneme", "Burası çalışmıyor")
-
-
-
-            Log.e("deneme", "detay4")
-
-
-
 
             startActivity(Intent(this@DetailsActivity, MainActivity::class.java))
             finish()
@@ -138,21 +110,26 @@ class DetailsActivity : AppCompatActivity() {
     private fun showColorPickerDialog() {
 
         val colors = listOf(
-            Color.CYAN,
-            Color.rgb(179, 157, 219),
-            Color.MAGENTA,
-            Color.rgb(245, 245, 220),
-            Color.YELLOW,
-            Color.rgb(169, 169, 169),
-            Color.GREEN,
-            Color.rgb(244, 164, 96),
-            Color.BLUE,
-            Color.RED,
             Color.rgb(255, 228, 181),
-            Color.rgb(72, 61, 139),
-            Color.rgb(205, 92, 92),
-            Color.rgb(255, 165, 0),
-            Color.rgb(102, 205, 170)
+            Color.rgb(240, 230, 140),
+            Color.rgb(0, 206, 209),
+            Color.rgb(186, 85, 211),
+            Color.rgb(107, 142, 35),
+            Color.rgb(255, 160, 122),
+            Color.rgb(75, 0, 130),
+            Color.rgb(218, 165, 32),
+            Color.rgb(70, 130, 180),
+            Color.rgb(128, 0, 128),
+            Color.rgb(46, 139, 87),
+            Color.rgb(153, 50, 204),
+            Color.rgb(139, 0, 0),
+            Color.rgb(0, 250, 154),
+            Color.rgb(39, 0, 139),
+            Color.rgb(255, 69, 0),
+            Color.rgb(85, 107, 47),
+            Color.rgb(106, 90, 205),
+            Color.rgb(39, 69, 19),
+            Color.rgb(0, 128, 128)
         )
 
         val numColumns = 5 // Desired number of columns

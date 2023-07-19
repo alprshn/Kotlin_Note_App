@@ -8,7 +8,6 @@ data class Notes(
     var note_title: String,
     var note_date: String,
     var note_color: Int,
-    var note: String,
-    var main_color: Int
+    var note: String
 ) : Serializable {
 }

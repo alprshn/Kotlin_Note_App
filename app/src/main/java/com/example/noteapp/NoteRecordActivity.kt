@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -38,7 +37,6 @@ class NoteRecordActivity : AppCompatActivity() {
         setContentView(binding.root)
         //Veritabanı
         vt = HelperDatabase(this)
-
         binding.saveButton.setOnClickListener {
             //Veritabanı
             val note_title = binding.editTextText.text.toString().trim()
@@ -47,39 +45,34 @@ class NoteRecordActivity : AppCompatActivity() {
             val constraintLayout = findViewById<ConstraintLayout>(R.id.contentRecord)
             val currentTime = getCurrentTime()
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
-
             if (TextUtils.isEmpty((note_title))) {
                 Snackbar.make(binding.toolbar, "Note Başlığı Giriniz", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             if (TextUtils.isEmpty((note))) {
                 Snackbar.make(binding.toolbar, "Note Giriniz", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-
-
-
-            Log.e("deneme", "deneme1")
-            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor,main_color)
-            Log.e("deneme", "deneme2")
+            binding.recordBackButton.setOnClickListener {
+                startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
+                finish()
+            }
+            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor)
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()
 
         }
-
+        binding.recordBackButton.setOnClickListener {
+            onBackPressed()
+        }
         //For Color
         content = findViewById(R.id.contentRecord)
         val colorPickerButton: Button = findViewById(R.id.ColorPickerCardRecord)
         colorPickerButton.setOnClickListener { showColorPickerDialog() }
-
         binding.emojiRecordButton.setOnClickListener {
             showAlertDialogButtonClicked()
         }
-
     }
-
 
     private fun getCurrentTime(): String {
         val currentTime = Calendar.getInstance().time
@@ -107,7 +100,6 @@ class NoteRecordActivity : AppCompatActivity() {
         dialog.show()
     }
 
-
     // Do something with the data coming from the AlertDialog
     private fun sendDialogDataToActivity(data: String) {
         Toast.makeText(this, data, Toast.LENGTH_SHORT).show()
@@ -121,19 +113,27 @@ class NoteRecordActivity : AppCompatActivity() {
     private fun showColorPickerDialog() {
 
         val colors = listOf(
-            Color.CYAN,
-            Color.rgb(255, 204, 102),
-            Color.MAGENTA,
-            Color.rgb(255, 153, 0),
-            Color.YELLOW,
-            Color.rgb(235, 235, 242),
-            Color.GREEN,
-            Color.rgb(221, 226, 252),
-            Color.BLUE,
-            Color.RED,
-            Color.rgb(149, 134, 124)
+            Color.rgb(255, 228, 181),
+            Color.rgb(240, 230, 140),
+            Color.rgb(0, 206, 209),
+            Color.rgb(186, 85, 211),
+            Color.rgb(107, 142, 35),
+            Color.rgb(255, 160, 122),
+            Color.rgb(75, 0, 130),
+            Color.rgb(218, 165, 32),
+            Color.rgb(70, 130, 180),
+            Color.rgb(128, 0, 128),
+            Color.rgb(46, 139, 87),
+            Color.rgb(153, 50, 204),
+            Color.rgb(139, 0, 0),
+            Color.rgb(0, 250, 154),
+            Color.rgb(39, 0, 139),
+            Color.rgb(255, 69, 0),
+            Color.rgb(85, 107, 47),
+            Color.rgb(106, 90, 205),
+            Color.rgb(39, 69, 19),
+            Color.rgb(0, 128, 128)
         )
-
         val numColumns = 5 // Desired number of columns
         val padding = dpToPx(15) // Convert 15 dp to pixels
         val spacing = dpToPx(15) // Set the spacing between items in dp
@@ -148,7 +148,6 @@ class NoteRecordActivity : AppCompatActivity() {
 
             adapter = ColorAdapter(this@NoteRecordActivity, colors) { selectedColor ->
                 // Do something with the selected color
-
                 // Change Background Color
                 content.setBackgroundColor(
                     ColorUtils.blendARGB(
@@ -167,7 +166,6 @@ class NoteRecordActivity : AppCompatActivity() {
             }
             addItemDecoration(GridSpacingItemDecoration(numColumns, spacing, true))
         }
-
         colorPickerDialog = AlertDialog.Builder(this, R.style.ShowAlertDialogTheme)
             .setTitle("Choose a color")
             .setView(recyclerView)
@@ -177,6 +175,5 @@ class NoteRecordActivity : AppCompatActivity() {
             .create()
         colorPickerDialog.show()
     }
-
 
 }

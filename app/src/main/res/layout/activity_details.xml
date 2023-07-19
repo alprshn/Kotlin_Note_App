@@ -29,6 +29,7 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
         <Button
+            android:id="@+id/detailsBackButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="start"
