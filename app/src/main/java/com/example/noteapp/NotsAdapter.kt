@@ -30,7 +30,6 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             textViewNote = design.findViewById(R.id.noteText)
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
         val design = LayoutInflater.from(mContext).inflate(R.layout.card_design, parent, false)
         return CardDesignHolder(design)
@@ -45,50 +44,26 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         var cardColor: Int
         val notes = notesList.get(position)
         cardColor = notes.note_color
-        Log.e("deneme", cardColor.toString())
-        Log.e("deneme", "deneme101")
         holder.notesCard.setCardBackgroundColor(cardColor)
-        Log.e("deneme", "deneme102")
-        Log.e("deneme", Color.RED.toString())
-
         //for Emoji Code
-
         holder.textViewEmoji.text = notes.emoji
-        Log.e("deneme", "deneme103")
         holder.textViewNoteTitle.text = notes.note_title
-        Log.e("deneme", "deneme104")
         holder.textViewNoteDate.text = notes.note_date
-        Log.e("deneme", "deneme105")
         holder.textViewNote.text = notes.note
-        Log.e("deneme", "deneme106")
-
 
         holder.notesCard.setOnClickListener {
             val intent = Intent(mContext, DetailsActivity::class.java)
             intent.putExtra("object", notes)
             mContext.startActivity(intent)
         }
-
-
         val popupMenu = PopupMenu(mContext, holder.notesCard)
         popupMenu.inflate(R.menu.context_menu)
 
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.delete -> {
-                    Log.e("hata","hatta1")
                     hd = HelperDatabase(mContext)
-                    Log.e("hata",position.toString())
-
                     Notesdao().NoteDelete(hd,notes.note_id)
-
-
-                    // Start the refresh background task.
-                    // This method calls setRefreshing(false) when it's finished.
-
-
-                    Log.e("hata","hatta3")
-
                     Toast.makeText(mContext, "Shared", Toast.LENGTH_SHORT).show()
                     true
                 }
@@ -96,9 +71,7 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
                     true
                 }
             }
-
         }
-
         // event on long press on image
         holder.notesCard.setOnLongClickListener {
             try {
@@ -108,13 +81,10 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
                 menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
                     .invoke(menu, true)
             } catch (e: Exception) {
-                Log.d("error", e.toString())
             } finally {
                 popupMenu.show()
             }
             true
         }
     }
-
-
 }
