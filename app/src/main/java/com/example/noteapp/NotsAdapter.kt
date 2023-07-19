@@ -2,8 +2,6 @@ package com.example.noteapp
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 
 class NotsAdapter(private val mContext: Context, private val notesList: List<Notes>) :
     RecyclerView.Adapter<NotsAdapter.CardDesignHolder>() {
-    private lateinit var hd:HelperDatabase
+    private lateinit var hd: HelperDatabase
+
     inner class CardDesignHolder(design: View) : RecyclerView.ViewHolder(design) {
         var notesCard: CardView
         var textViewEmoji: TextView
         var textViewNoteTitle: TextView
         var textViewNoteDate: TextView
         var textViewNote: TextView
+
         init {
             notesCard = design.findViewById(R.id.CardView)
             textViewEmoji = design.findViewById(R.id.emoji)
@@ -30,16 +30,20 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             textViewNote = design.findViewById(R.id.noteText)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
         val design = LayoutInflater.from(mContext).inflate(R.layout.card_design, parent, false)
         return CardDesignHolder(design)
     }
+
     override fun getItemCount(): Int {
         return notesList.size
     }
+
     fun getEmoji(uni: Int): String {
         return String(Character.toChars(uni))
     }
+
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
         var cardColor: Int
         val notes = notesList.get(position)
@@ -63,10 +67,11 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             when (it.itemId) {
                 R.id.delete -> {
                     hd = HelperDatabase(mContext)
-                    Notesdao().NoteDelete(hd,notes.note_id)
+                    Notesdao().NoteDelete(hd, notes.note_id)
                     Toast.makeText(mContext, "Shared", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 else -> {
                     true
                 }
