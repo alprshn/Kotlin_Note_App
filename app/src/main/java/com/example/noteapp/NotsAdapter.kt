@@ -11,25 +11,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat.recreate
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 
 class NotsAdapter(private val mContext: Context, private val notesList: List<Notes>) :
     RecyclerView.Adapter<NotsAdapter.CardDesignHolder>() {
-    private lateinit var note:Notes
     private lateinit var hd:HelperDatabase
-    private lateinit var context: Context
-
     inner class CardDesignHolder(design: View) : RecyclerView.ViewHolder(design) {
         var notesCard: CardView
         var textViewEmoji: TextView
         var textViewNoteTitle: TextView
         var textViewNoteDate: TextView
         var textViewNote: TextView
-
         init {
             notesCard = design.findViewById(R.id.CardView)
             textViewEmoji = design.findViewById(R.id.emoji)
@@ -37,27 +29,21 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
             textViewNoteDate = design.findViewById(R.id.noteDateText)
             textViewNote = design.findViewById(R.id.noteText)
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
         val design = LayoutInflater.from(mContext).inflate(R.layout.card_design, parent, false)
         return CardDesignHolder(design)
     }
-
     override fun getItemCount(): Int {
         return notesList.size
     }
-
     fun getEmoji(uni: Int): String {
         return String(Character.toChars(uni))
     }
-
     override fun onBindViewHolder(holder: CardDesignHolder, position: Int) {
         var cardColor: Int
         val notes = notesList.get(position)
-        Log.e("deneme", "deneme100")
         cardColor = notes.note_color
         Log.e("deneme", cardColor.toString())
         Log.e("deneme", "deneme101")
