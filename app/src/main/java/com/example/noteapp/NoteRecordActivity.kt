@@ -62,7 +62,7 @@ class NoteRecordActivity : AppCompatActivity() {
 
 
             Log.e("deneme", "deneme1")
-            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor)
+            Notesdao().AddNote(vt, note, note_title, emoji, currentTime, cardColor,main_color)
             Log.e("deneme", "deneme2")
             startActivity(Intent(this@NoteRecordActivity, MainActivity::class.java))
             finish()

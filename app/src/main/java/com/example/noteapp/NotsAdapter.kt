@@ -84,6 +84,8 @@ class NotsAdapter(private val mContext: Context, private val notesList: List<Not
         }
 
 
+
+
         val popupMenu = PopupMenu(mContext, holder.notesCard)
         popupMenu.inflate(R.menu.context_menu)
 

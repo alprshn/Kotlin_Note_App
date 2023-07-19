@@ -26,7 +26,8 @@ class Notesdao {
             ,c.getString(c.getColumnIndex("note_title"))
             ,c.getString(c.getColumnIndex("note_date"))
             ,c.getInt(c.getColumnIndex("note_color"))
-            ,c.getString(c.getColumnIndex("note")))
+            ,c.getString(c.getColumnIndex("note"))
+            ,c.getInt(c.getColumnIndex("main_color")))
             Log.e("deneme","deneme23")
             notesList.add(note)
             Log.e("deneme","deneme10")
@@ -50,6 +51,7 @@ class Notesdao {
         emoji: String,
         note_date: String,
         note_color: Int,
+        main_color: Int
     ) {
         val db = hd.writableDatabase
         val values = ContentValues()
@@ -60,6 +62,7 @@ class Notesdao {
         values.put("note_color", note_color)
         Log.e("deneme","deneme104")
         values.put("note", note)
+        values.put("main_color",main_color)
         db.insertOrThrow("notes", null, values)
         Log.e("deneme","deneme14")
         db.close()
@@ -73,7 +76,8 @@ class Notesdao {
         note_title: String,
         emoji: String,
         note_date: String,
-        note_color: Int
+        note_color: Int,
+        main_color: Int
     ) {
         Log.e("deneme","detay524")
         val db = hd.writableDatabase
@@ -84,6 +88,7 @@ class Notesdao {
         values.put("emoji", emoji)
         values.put("note_date", note_date)
         values.put("note_color", note_color)
+        values.put("main_color",main_color)
         Log.e("deneme","deneme526")
         db.update("notes", values, "note_id=?", arrayOf(note_id.toString()))
         Log.e("deneme","deneme57")
