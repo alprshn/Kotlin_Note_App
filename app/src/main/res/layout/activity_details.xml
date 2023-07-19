@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contentDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBFBFB"
-    tools:context=".NoteRecordActivity"
-    android:id="@+id/contentDetails">
+    tools:context=".NoteRecordActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -28,6 +28,7 @@
             android:text="Emoji"
             android:textColor="@color/black"
             android:textSize="18sp" />
+
         <Button
             android:id="@+id/detailsBackButton"
             android:layout_width="40dp"
@@ -49,7 +50,6 @@
             android:tint="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="12dp" />
-
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -128,9 +128,6 @@
             android:tint="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="12dp" />
-
-
-
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

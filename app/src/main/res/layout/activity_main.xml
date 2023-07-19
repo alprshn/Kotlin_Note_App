@@ -2,28 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F6F6"
-    tools:context=".MainActivity"
-    android:id="@+id/content">
-
+    tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
+        android:radius="20dp"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:radius= "20dp"
-        android:layout_margin="10dp"
-        >
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,6 +32,7 @@
             android:textSize="18sp"
             tools:layout_editor_absoluteX="129dp"
             tools:layout_editor_absoluteY="19dp" />
+
         <Button
             android:id="@+id/changeViewButton"
             android:layout_width="40dp"
@@ -45,9 +43,6 @@
             android:tint="@color/black"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="12dp" />
-
-
-
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -61,7 +56,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-
         tools:listitem="@layout/card_design" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -71,12 +65,11 @@
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="23dp"
         android:clickable="true"
+        app:backgroundTint="#2E6DEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/baseline_add_24"
-        app:backgroundTint="#2E6DEE"
-        app:tint="@color/white"
-        />
+        app:tint="@color/white" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/bottomCard"
@@ -86,11 +79,8 @@
         app:cardBackgroundColor="#E3DFDF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
-
-
 
     </androidx.cardview.widget.CardView>
 

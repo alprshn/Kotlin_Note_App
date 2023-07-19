@@ -4,23 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFCD">
+    android:background="#F4F6FC">
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/teamLiquidIv"
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:foregroundGravity="center"
-        app:lottie_loop="true"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_bias="0.416"
         app:lottie_autoPlay="true"
         app:lottie_fileName="note.json"
+        app:lottie_loop="true"
         app:lottie_speed="1" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/fromkami" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
