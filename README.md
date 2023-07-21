@@ -4,7 +4,7 @@
 <h2>Documentation Dokka</h2>
 
 
-<h4>Setup Dokka</h4>
+<h3>Setup Dokka</h3>
 
 This will be written in build.gradle(Module:app)
 ```
