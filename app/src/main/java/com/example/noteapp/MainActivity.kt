@@ -6,7 +6,14 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp.databinding.ActivityMainBinding
-
+/**
+ * The main activity of the Note App.
+ *
+ * This activity displays a list of notes in a RecyclerView.
+ * Users can switch between list view and grid view for the notes.
+ * The notes are fetched from a database and displayed using the `NotsAdapter`.
+ * Users can also add new notes by clicking the floating action button.
+ */
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -32,7 +39,10 @@ class MainActivity : AppCompatActivity() {
         }
         ChangeViev()
     }
-
+    /**
+     * Switches between list view and grid view for the notes.
+     * This function is called when the user clicks the change view button.
+     */
     fun ChangeViev() {
         var selector: Boolean
         selector = true
