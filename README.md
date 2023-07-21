@@ -1,10 +1,20 @@
 # Kotlin_Note_App V1
 
 
-<h2>Dokka</h2>
+<h2>Documentation Dokka</h2>
 
-<h3>Setup Dokka</h3>
 
+<h4>Setup Dokka</h4>
+
+This will be written in build.gradle(Module:app)
 ```
-id("org.jetbrains.dokka") version "1.8.20"
+plugins {
+    id("org.jetbrains.dokka") version "1.8.20"
+}
 ```
+
+and to start it in terminal
+```
+ ./gradlew dokkaHtml  
+```
+
