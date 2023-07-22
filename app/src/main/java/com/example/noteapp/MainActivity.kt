@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notesLists: ArrayList<Notes>
     private lateinit var adapter: NotsAdapter
     private lateinit var vt: HelperDatabase
-
+    var selector: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
      * This function is called when the user clicks the change view button.
      */
     fun ChangeViev() {
-        var selector: Boolean
         selector = true
         binding.changeViewButton.setOnClickListener {
             if (selector) {

@@ -37,7 +37,6 @@ class DetailsActivity : AppCompatActivity() {
         binding.editTitle.setText(notes.note_title)
         binding.editNote.setText(notes.note)
         binding.detailsEmojiText.setText(notes.emoji)
-
         binding.detailsEmojiPicker.setOnClickListener {
             showAlertDialogButtonClicked()
         }
