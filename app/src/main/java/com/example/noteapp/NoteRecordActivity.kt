@@ -46,11 +46,11 @@ class NoteRecordActivity : AppCompatActivity() {
             val currentTime = getCurrentTime()
             val cardColor = (constraintLayout.background as? ColorDrawable)?.color ?: 0
             if (TextUtils.isEmpty((note_title))) {
-                Snackbar.make(binding.toolbar, "Note Başlığı Giriniz", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.toolbar, "Enter Note Title", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty((note))) {
-                Snackbar.make(binding.toolbar, "Note Giriniz", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.toolbar, "Enter Note", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             binding.recordBackButton.setOnClickListener {
@@ -83,7 +83,7 @@ class NoteRecordActivity : AppCompatActivity() {
     fun showAlertDialogButtonClicked() {
         // Create an alert builder
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Name")
+        builder.setTitle("Emoji")
 
         // set the custom layout
         val customLayout: View = layoutInflater.inflate(R.layout.emoji_layout, null)
