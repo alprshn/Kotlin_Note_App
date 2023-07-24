@@ -2,11 +2,13 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id("org.jetbrains.dokka") version "1.8.20"
+    id 'jacoco'
 }
 
 subprojects {
     apply(plugin = "org.jetbrains.dokka")
 }
+
 
 android {
     namespace 'com.example.noteapp'
@@ -23,8 +25,17 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    testOptions {
+        animationsDisabled true
 
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -54,6 +65,6 @@ dependencies {
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-
-
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
 }
