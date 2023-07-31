@@ -71,7 +71,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
 
-    private fun getCurrentTime(): String {
+    fun getCurrentTime(): String {
         val currentTime = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault())
         return dateFormat.format(currentTime)
