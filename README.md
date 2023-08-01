@@ -1,6 +1,5 @@
 # Kotlin_Note_App V1
 
-
 <h2>Documentation Dokka</h2>
 Documentation rules for Kotlin in this link https://kotlinlang.org/docs/kotlin-doc.html
 <h3>Setup Dokka</h3>
